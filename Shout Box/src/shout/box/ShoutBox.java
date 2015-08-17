@@ -57,9 +57,10 @@ public class ShoutBox {
    * @param messageNumber
    * @return
    */
-  public String getSingleMessage(ArrayList messageListName, int messageNumber) {
+  public String getSingleMessage(int messageNumber,ArrayList messageListName) {
     String message = "No message entered."; // Value with no message entered.
-    messageListName.get(messageNumber);
+    System.out.printf("%s%n",messageListName.get(messageNumber));
+    //messageListName.get(messageNumber);
     return message; // Return selected message.
   }
   
@@ -88,6 +89,7 @@ public class ShoutBox {
     ShoutBox a = new ShoutBox(); // Create main ShoutBox object.
     ArrayList<String> messageList = new ArrayList<>(); // Create array list to hold messages.
     int count; // Create a variable to hold the number of messages the user wants to input.
+    int messageNum; // Create a variable to hold the message the user wants to print.
     
     // Welcome the user.
     System.out.printf("Welcome to the \"ShoutBox\" program. Let's shout some messages!%n%n");
@@ -99,13 +101,18 @@ public class ShoutBox {
     // Collect the messages from the user.
     a.setMessages(count, messageList);
     
-    // Print out each message.    
-    System.out.printf("%n%n-------------------%n%n");    
+    // Print out each message.
+    System.out.printf("%n%n-------------------%n%n");
     System.out.printf("Your messages are:%n%n");
     a.getMessages(messageList);
     
     // user chooses a message
+    System.out.printf("%n%n-------------------%n%n");
+    System.out.printf("Please choose a message.");
+    messageNum = a.getUserInteger() - 1;
+    
     // print user's message
+    a.getSingleMessage(messageNum, messageList);
     
 //    - shoutOutCannedMessage() displays all messages AND allows user to select one
 //    - then return selected string
