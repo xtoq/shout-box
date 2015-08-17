@@ -40,15 +40,27 @@ public class ShoutBox {
   /**
    * Print out each message in the array list in a numbered list.
    * @param messageListName Name of the array message list.
-   * @return printMessages
+   * @return getMessages
    */
-  public String printMessages(ArrayList messageListName) {
+  public String getMessages(ArrayList messageListName) {
     int order = 0; // Counter for the numbered list.
-    String printMessages = "No messages entered.";
+    String getMessages = "No messages entered.";
     for (Object message : messageListName) { // Enhanced for loop is more efficient here.
       System.out.printf("%s. %s%n",String.valueOf(order++ + 1),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
     }
-    return printMessages;
+    return getMessages;
+  }
+  
+  /**
+   *
+   * @param messageListName
+   * @param messageNumber
+   * @return
+   */
+  public String getSingleMessage(ArrayList messageListName, int messageNumber) {
+    String message = "No message entered."; // Value with no message entered.
+    messageListName.get(messageNumber);
+    return message; // Return selected message.
   }
   
   // NOTE: setters
@@ -90,9 +102,12 @@ public class ShoutBox {
     // Print out each message.    
     System.out.printf("%n%n-------------------%n%n");    
     System.out.printf("Your messages are:%n%n");
-    a.printMessages(messageList);
+    a.getMessages(messageList);
     
-//    - shoutOutCannedMessage() displays all messages and allows user to select one
+    // user chooses a message
+    // print user's message
+    
+//    - shoutOutCannedMessage() displays all messages AND allows user to select one
 //    - then return selected string
   }
   
