@@ -70,6 +70,8 @@ public class ShoutBox {
    */
   public static void main(String[] args) {
     
+//    - class must be named shoutOutCannedMessage()
+    
     // Create objects.
     ShoutBox a = new ShoutBox(); // Create main ShoutBox object.
     ArrayList<String> messageList = new ArrayList<>(); // Create array list to hold messages.
@@ -89,6 +91,9 @@ public class ShoutBox {
     System.out.printf("%n%n-------------------%n%n");    
     System.out.printf("Your messages are:%n%n");
     a.printMessages(messageList);
+    
+//    - shoutOutCannedMessage() displays all messages and allows user to select one
+//    - then return selected string
   }
   
 }
