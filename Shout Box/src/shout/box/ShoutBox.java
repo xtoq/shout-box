@@ -78,16 +78,17 @@ public class ShoutBox {
 ////    }
   }
   
-  public String shoutOutCannedMessage(int messageNumber,ArrayList messageListName) {
+  public String shoutOutCannedMessage(ArrayList messageListName) {
+    int messageNumber = 0; // Initalize variable for holding the user input.
     do {
-      System.out.printf("%nPlease type a number from the list below to print that message.%n");
-      getMessages(messageListName);
+      System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
+      getMessages(messageListName); // Print messages from the list in args.
       System.out.printf("%n>> ");
-      messageNumber = getUserInteger() - 1; // subtract 1 from user input to get the actual index value      
+      messageNumber = getUserInteger() - 1; // Subtract one from the user input to get the index value. 
     }
-    while (messageNumber >= messageListName.size());
+    while (messageNumber >= messageListName.size()); // Keep iterating if user enters something outside the array index.
     
-    // print user's message
+    // Print selected message.
     return getSingleMessage(messageNumber, messageListName);
   }
   
@@ -116,7 +117,7 @@ public class ShoutBox {
     ShoutBox a = new ShoutBox(); // Create main ShoutBox object.
     ArrayList<String> messageList = new ArrayList<>(); // Create array list to hold messages.
     int count; // Create a variable to hold the number of messages the user wants to input.
-    int messageNum; // Create a variable to hold the message the user wants to print.
+//    int messageNum; // Create a variable to hold the message the user wants to print.
     
     // Welcome the user.
     System.out.printf("Welcome to the \"ShoutBox\" program. Let's shout some messages!%n%n");
@@ -127,7 +128,7 @@ public class ShoutBox {
     
     // Collect the messages from the user.
     a.setMessages(count, messageList);
-
+    a.shoutOutCannedMessage(messageList);
 
 
 
@@ -141,6 +142,9 @@ public class ShoutBox {
 //    
 //    // print user's message
 //    a.getSingleMessage(messageNum, messageList);
+    
+    
+    
     
     
 //    System.out.printf("%nPlease type a number from the list above to choose a message.%n>> ");
