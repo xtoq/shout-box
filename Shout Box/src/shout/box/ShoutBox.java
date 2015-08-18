@@ -43,10 +43,10 @@ public class ShoutBox {
    * @return getMessages
    */
   public String getMessages(ArrayList messageListName) {
-    int order = 0; // Counter for the numbered list.
+    int order = 1; // Counter for the numbered list.
     String getMessages = "No messages entered.";
     for (Object message : messageListName) { // Enhanced for loop is more efficient here.
-      System.out.printf("%s. %s%n",String.valueOf(order++ + 1),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
+      System.out.printf("%s. %s%n",String.valueOf(order++),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
     }
     return getMessages;
   }
@@ -58,10 +58,37 @@ public class ShoutBox {
    * @return
    */
   public String getSingleMessage(int messageNumber,ArrayList messageListName) {
-    String message = "No message entered."; // Value with no message entered.
+    String message = "";
     System.out.printf("%s%n",messageListName.get(messageNumber));
     //messageListName.get(messageNumber);
     return message; // Return selected message.
+    
+//    try {
+//      String message = "No message entered."; // Value with no message entered.
+//      System.out.printf("%s%n",messageListName.get(messageNumber));
+//      //messageListName.get(messageNumber);
+//    }
+//    catch (java.util.InputMismatchException e) {
+//      System.err.println("Caught IOException: " +  e.getMessage());
+//    }
+////    finally {
+////        System.out.printf("Closing");
+////        getSingleMessage.close();
+//      return message; // Return selected message.
+////    }
+  }
+  
+  public String shoutOutCannedMessage(int messageNumber,ArrayList messageListName) {
+    do {
+      System.out.printf("%nPlease type a number from the list below to print that message.%n");
+      getMessages(messageListName);
+      System.out.printf("%n>> ");
+      messageNumber = getUserInteger() - 1; // subtract 1 from user input to get the actual index value      
+    }
+    while (messageNumber >= messageListName.size());
+    
+    // print user's message
+    return getSingleMessage(messageNumber, messageListName);
   }
   
   // NOTE: setters
@@ -100,19 +127,64 @@ public class ShoutBox {
     
     // Collect the messages from the user.
     a.setMessages(count, messageList);
+
+
+
+
+//    do {
+//      System.out.printf("%nPlease type a number from the list below to print that message.%n");
+//      a.getMessages(messageList);
+//      System.out.printf("%n>> ");
+//      messageNum = a.getUserInteger() - 1; // subtract 1 from user input to get the actual index value      
+//    }
+//    while (messageNum >= messageList.size());
+//    
+//    // print user's message
+//    a.getSingleMessage(messageNum, messageList);
     
-    // Print out each message.
-    System.out.printf("%n%n-------------------%n%n");
-    System.out.printf("Your messages are:%n%n");
-    a.getMessages(messageList);
     
-    // user chooses a message
-    System.out.printf("%n%n-------------------%n%n");
-    System.out.printf("Please choose a message.");
-    messageNum = a.getUserInteger() - 1;
+//    System.out.printf("%nPlease type a number from the list above to choose a message.%n>> ");
+//    messageNum = a.getUserInteger() - 1; // subtract 1 from user input to get the actual index value
+
+
     
-    // print user's message
-    a.getSingleMessage(messageNum, messageList);
+    
+    
+//    try {
+//      do {
+//        System.out.printf("%nPlease type a number from the list above to print that message.%n>> ");
+//        messageNum = a.getUserInteger() - 1; // subtract 1 from user input to get the actual index value      
+//      }
+//      while (messageNum >= messageList.size());
+//      // print user's message
+//      a.getSingleMessage(messageNum, messageList);
+//    }
+//    catch (java.lang.IndexOutOfBoundsException e) {
+//      System.err.printf("Please enter a number from the list.%n>> ");
+//    }
+//    catch (java.util.InputMismatchException e) {
+//      System.err.printf("Please enter a number.%n>> ");
+//    }
+//    finally {
+//      System.out.printf("Thanks for using the ShoutBox program!");
+//    }
+    
+    
+
+//    // Print out each message.
+//    System.out.printf("%n%n-------------------%n%n");
+//    System.out.printf("Your messages are:%n%n");
+//    a.getMessages(messageList);
+//    
+//    // user chooses a message
+//    System.out.printf("%n%n-------------------%n%n");
+//    System.out.printf("Please type a number to choose a message.%n>> ");
+//    messageNum = a.getUserInteger() - 1; // subtract 1 from user input to get the actual index value
+//    // print user's message
+//    a.getSingleMessage(messageNum, messageList);
+    
+    
+    
     
 //    - shoutOutCannedMessage() displays all messages AND allows user to select one
 //    - then return selected string
