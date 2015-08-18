@@ -42,7 +42,7 @@ public class ShoutBox {
    * @param messageListName Name of the array message list.
    * @return getMessages    Returns a numbered list of messages.
    */
-  public String getMessages(ArrayList messageListName) {
+  public String getMessages(ArrayList<String> messageListName) {
     int order = 1; // Counter for the numbered list.
     String getMessages = "No messages entered.";
     for (Object message : messageListName) { // Enhanced for loop is more efficient here.
@@ -57,13 +57,13 @@ public class ShoutBox {
    * @param messageNumber   Array index number.
    * @return message        Returns message at provided index value.
    */
-  public String getSingleMessage(int messageNumber,ArrayList messageListName) {
+  public String getSingleMessage(int messageNumber,ArrayList<String> messageListName) {
     String message = "";
     System.out.printf("%s%n",messageListName.get(messageNumber));
     return message; // Return selected message.
   }
   
-  public String shoutOutCannedMessage(ArrayList messageListName) {
+  public String shoutOutCannedMessage(ArrayList<String> messageListName) {
     int messageNumber = 0; // Initalize variable for holding the user input.
     do {
       System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
@@ -72,7 +72,8 @@ public class ShoutBox {
       messageNumber = getUserInteger() - 1; // Subtract one from the user input to get the index value. 
     }
     while (messageNumber >= messageListName.size()); // Keep iterating if user enters something outside the array index.
-    
+
+    System.out.printf("%n");
     return getSingleMessage(messageNumber, messageListName); // Print selected message.
   }
   
@@ -83,7 +84,7 @@ public class ShoutBox {
    * @param numMessages     Number of messages to enter.
    * @param messageListName Name of the array message list to add to.
    */    
-  public void setMessages(int numMessages,ArrayList messageListName) {
+  public void setMessages(int numMessages,ArrayList<String> messageListName) {
     for (int i = 1; i <= numMessages; i++) { // Start the count at 1 instead of 0.
       System.out.printf("%nPlease enter a message:%n>> ");
       messageListName.add(getUserString()); // Add user input into array list.
@@ -93,6 +94,7 @@ public class ShoutBox {
   /**
    * @param args the command line arguments
    */
+//  @SuppressWarnings("unchecked")
   public static void main(String[] args) {
     
     // Create objects.
