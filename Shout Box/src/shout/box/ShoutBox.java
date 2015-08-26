@@ -88,13 +88,33 @@ public class ShoutBox {
     int messageNumber = 0; // Initalize variable for holding the user input.
     do {
       System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
-      getMessages(messageListName); // Print messages from the list in args.
+//      getMessages(messageListName); // Print messages from the list in args.
+      for(Map.Entry<Integer, String> entry : messageListName.entrySet()) {
+        System.out.printf("%s: %s\n",entry.getKey(),entry.getValue());
+      }
       System.out.printf("%n>> ");
-      messageNumber = getUserInteger() - 1; // Subtract one from the user input to get the index value. 
+      messageNumber = getUserInteger(); // Set user input to the index value. 
     }
-    while (messageNumber >= messageListName.size()); // Keep iterating if user enters something outside the array index.
+    while (messageNumber > messageListName.size()); // Keep iterating if user enters something outside the array index.
 
     System.out.printf("%n");
+    
+//    do {
+//      System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
+//      // Print messages from the list in args.
+//      for(Map.Entry<Integer, String> entry : messageList.entrySet()) {
+//        System.out.printf("%s: %s\n",entry.getKey(),entry.getValue());
+//      }
+//      System.out.printf("%n>> ");
+////      count = a.getUserInteger() - 1; // Subtract one from the user input to get the index value. 
+//      count = a.getUserInteger(); // Set user input to the index value.
+//    }
+//    while (count > messageList.size()); // Keep iterating if user enters something outside the array index.
+//
+//    System.out.printf("%n");
+//    
+//    System.out.printf("%s%n",messageList.get(count)); // Print selected message.
+
     return getSingleMessage(messageNumber, messageListName); // Print selected message.
   }
   
@@ -109,8 +129,7 @@ public class ShoutBox {
   public void setMessages(Integer numMessages, HashMap<Integer, String> messageListName) {
     for (int i = 1; i <= numMessages; i++) { // Start the count at 1 instead of 0.
       System.out.printf("%nPlease enter a message:%n>> ");
-//      messageListName.add(getUserString()); // Add user input into array list.
-      messageListName.put(i, getUserString());
+      messageListName.put(i, getUserString()); // Add user input into hash map.
     }
   }
 
@@ -122,77 +141,54 @@ public class ShoutBox {
     
     // Create objects.
     ShoutBox a = new ShoutBox(); // Create main ShoutBox object.
-
-//    ArrayList<String> messageList = new ArrayList<>(); // Create array list to hold user messages.
-//    int count; // Create a variable to hold the number of messages the user wants to input.
-//    
-//    // Welcome the user.
-//    System.out.printf("Welcome to the \"ShoutBox\" program. Let's shout some messages!%n%n");
-//    
-//    // Collect number of messages from user (this is the size of the array list).
-//    System.out.printf("How many messages would you like to enter? Please enter a number.%n>> ");
-//    count = a.getUserInteger(); // Set count variable to user input.
-//    
-//    // Collect the messages from the user (these are the array list values).
-//    a.setMessages(count, messageList);
-//    
-//    // Print messages.
-//    a.shoutOutCannedMessage(messageList);
-
+    HashMap<Integer, String> messageList = new HashMap<>(); // Create array list to hold user messages.
+    Integer count; // Create a variable to hold the number of messages the user wants to input.
+    
     // Welcome the user.
     System.out.printf("Welcome to the \"ShoutBox\" program. Let's shout some messages!%n%n");
     
-    // Collect number of messages from user (this is the size of the array list).
+    // Collect number of messages from user (this is the size of the hash map).
     System.out.printf("How many messages would you like to enter? Please enter a number.%n>> ");
-    HashMap<Integer, String> messageList = new HashMap<>(); // Create array list to hold user messages.
-    Integer count; // Create a variable to hold the number of messages the user wants to input.
     count = a.getUserInteger(); // Set count variable to user input.
-//    // Collect the messages from the user (these are the map values).
-//    a.setMessages(count, messageList);
-    for (int i = 1; i <= count; i++) { // Start the count at 1 instead of 0.
-      System.out.printf("%nPlease enter a message:%n>> ");
-//      messageListName.add(getUserString()); // Add user input into array list.
-      messageList.put(i, a.getUserString());
-    }
-//    // Print messages.
-//    a.shoutOutCannedMessage(messageList);
-//    Integer message = messageList.get(1);
-//    System.out.printf("Value is: %s", message);
+    
+    // Collect the messages from the user (these are the array list values).
+    a.setMessages(count, messageList);
+    
+    // Print messages.
+    a.shoutOutCannedMessage(messageList);
+    
+//    // Collect number of messages from user (this is the size of the hash map).
+//    System.out.printf("How many messages would you like to enter? Please enter a number.%n>> ");
+//    count = a.getUserInteger(); // Set count variable to user input.
 
-//    for(Map.Entry<Integer, String> entry : messageList.entrySet())
-//    {
-//       System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
+//    // Collect the messages from the user (these are the map values).
+//    for (int i = 1; i <= count; i++) { // Start the count at 1 instead of 0.
+//      System.out.printf("%nPlease enter a message:%n>> ");
+//      messageList.put(i, a.getUserString()); // Add user input into hash map.
 //    }
     
-    do {
-      System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
-      // Print messages from the list in args.
-      for(Map.Entry<Integer, String> entry : messageList.entrySet()) {
-        System.out.printf("%s: %s\n",entry.getKey(),entry.getValue());
-//         System.out.printf(entry.getKey() + ": " + entry.getValue());
-      }
-      System.out.printf("%n>> ");
-//      count = a.getUserInteger() - 1; // Subtract one from the user input to get the index value. 
-      count = a.getUserInteger(); // Subtract one from the user input to get the index value. 
-    }
-    while (count > messageList.size()); // Keep iterating if user enters something outside the array index.
-
-    System.out.printf("%n");
+//    do {
+//      System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
+//      // Print messages from the list in args.
+//      for(Map.Entry<Integer, String> entry : messageList.entrySet()) {
+//        System.out.printf("%s: %s\n",entry.getKey(),entry.getValue());
+//      }
+//      System.out.printf("%n>> ");
+////      count = a.getUserInteger() - 1; // Subtract one from the user input to get the index value. 
+//      count = a.getUserInteger(); // Set user input to the index value.
+//    }
+//    while (count > messageList.size()); // Keep iterating if user enters something outside the array index.
+//
+//    System.out.printf("%n");
+//    
+//    System.out.printf("%s%n",messageList.get(count)); // Print selected message.
     
-//    System.out.println(messageList.get(1));
-//    String message = "";
-    System.out.printf("%s%n",messageList.get(count));
-    
-//    // Close the program functions.
+//    // TODO: add close function below
 //    Boolean close = false;
 //    do {
 //      // DO THIS
 //    }
 //    while (close = false);
-
-//    System.out.println("Key: " + messageList.getKey() + " Value: " + messageList.getValue());
-//    Integer message = messageList.get(1);
-//    System.out.printf("Value is: %s", message);
   }
   
 }
