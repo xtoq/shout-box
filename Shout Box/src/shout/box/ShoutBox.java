@@ -6,8 +6,9 @@
 package shout.box;
 
 // NOTE: imports
-import java.util.ArrayList; 
+//import java.util.ArrayList; 
 import java.util.Scanner;
+import java.util.*;
 
 /**
  *
@@ -31,9 +32,19 @@ public class ShoutBox {
    * Get next integer of user input.
    * @return userInputValue   Returns the value input by the user.
    */
-  public int getUserInteger() {
+  public int getUserInt() {
     Scanner userInputScanner = new Scanner(System.in); // Create a new scanner object to collect the user input.
     int userInputValue = userInputScanner.nextInt(); // Create a new string variable to store the user input.
+    return userInputValue; // Returns the value of the user input.
+  }
+  
+  /**
+   * Get next integer of user input.
+   * @return userInputValue   Returns the value input by the user.
+   */
+  public int getUserInteger() {
+    Scanner userInputScanner = new Scanner(System.in); // Create a new scanner object to collect the user input.
+    Integer userInputValue = userInputScanner.nextInt(); // Create a new string variable to store the user input.
     return userInputValue; // Returns the value of the user input.
   }
   
@@ -42,11 +53,19 @@ public class ShoutBox {
    * @param messageListName Name of the array message list.
    * @return getMessages    Returns a numbered list of messages.
    */
-  public String getMessages(ArrayList<String> messageListName) {
+//  public String getMessages(ArrayList<String> messageListName) {
+  public String getMessages(HashMap<Integer, String> messageListName) {
     int order = 1; // Counter for the numbered list.
     String getMessages = "No messages entered.";
-    for (Object message : messageListName) { // Enhanced for loop is more efficient here.
-      System.out.printf("%s. %s%n",String.valueOf(order++),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
+//    for (Object message : messageListName) { // Enhanced for loop is more efficient here.
+//    for (Map.Entry<Integer, String> entry : messageListName.entrySet())
+//    for (Map.Entry<Integer, String> entry : messageListName) { // Enhanced for loop is more efficient here.
+//      System.out.printf("%s. %s%n",String.valueOf(order++),message); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
+//    }
+    for(Map.Entry<Integer, String> entry : messageListName.entrySet()) {
+//       System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
+//       System.out.printf("%s. %s%n",String.valueOf(order++),entry); // We're adding 1 to the order value to make this human-readable since the index starts at 0.
+       System.out.printf("%s. %s%n",entry.getValue(),entry.getKey());
     }
     return getMessages;
   }
@@ -57,13 +76,15 @@ public class ShoutBox {
    * @param messageNumber   Array index number.
    * @return message        Returns message at provided index value.
    */
-  public String getSingleMessage(int messageNumber,ArrayList<String> messageListName) {
+//  public String getSingleMessage(int messageNumber,ArrayList<String> messageListName) {
+  public String getSingleMessage(int messageNumber,HashMap<Integer, String> messageListName) {
     String message = "";
     System.out.printf("%s%n",messageListName.get(messageNumber));
     return message; // Return selected message.
   }
   
-  public String shoutOutCannedMessage(ArrayList<String> messageListName) {
+//  public String shoutOutCannedMessage(ArrayList<String> messageListName) {
+  public String shoutOutCannedMessage(HashMap<Integer, String> messageListName) {
     int messageNumber = 0; // Initalize variable for holding the user input.
     do {
       System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
@@ -84,10 +105,12 @@ public class ShoutBox {
    * @param numMessages     Number of messages to enter.
    * @param messageListName Name of the array message list to add to.
    */    
-  public void setMessages(int numMessages,ArrayList<String> messageListName) {
+//  public void setMessages(int numMessages,ArrayList<String> messageListName) {
+  public void setMessages(Integer numMessages, HashMap<Integer, String> messageListName) {
     for (int i = 1; i <= numMessages; i++) { // Start the count at 1 instead of 0.
       System.out.printf("%nPlease enter a message:%n>> ");
-      messageListName.add(getUserString()); // Add user input into array list.
+//      messageListName.add(getUserString()); // Add user input into array list.
+      messageListName.put(i, getUserString());
     }
   }
 
@@ -99,21 +122,65 @@ public class ShoutBox {
     
     // Create objects.
     ShoutBox a = new ShoutBox(); // Create main ShoutBox object.
-    ArrayList<String> messageList = new ArrayList<>(); // Create array list to hold user messages.
-    int count; // Create a variable to hold the number of messages the user wants to input.
-    
+
+//    ArrayList<String> messageList = new ArrayList<>(); // Create array list to hold user messages.
+//    int count; // Create a variable to hold the number of messages the user wants to input.
+//    
+//    // Welcome the user.
+//    System.out.printf("Welcome to the \"ShoutBox\" program. Let's shout some messages!%n%n");
+//    
+//    // Collect number of messages from user (this is the size of the array list).
+//    System.out.printf("How many messages would you like to enter? Please enter a number.%n>> ");
+//    count = a.getUserInteger(); // Set count variable to user input.
+//    
+//    // Collect the messages from the user (these are the array list values).
+//    a.setMessages(count, messageList);
+//    
+//    // Print messages.
+//    a.shoutOutCannedMessage(messageList);
+
     // Welcome the user.
     System.out.printf("Welcome to the \"ShoutBox\" program. Let's shout some messages!%n%n");
     
     // Collect number of messages from user (this is the size of the array list).
     System.out.printf("How many messages would you like to enter? Please enter a number.%n>> ");
+    HashMap<Integer, String> messageList = new HashMap<>(); // Create array list to hold user messages.
+    Integer count; // Create a variable to hold the number of messages the user wants to input.
     count = a.getUserInteger(); // Set count variable to user input.
+//    // Collect the messages from the user (these are the map values).
+//    a.setMessages(count, messageList);
+    for (int i = 1; i <= count; i++) { // Start the count at 1 instead of 0.
+      System.out.printf("%nPlease enter a message:%n>> ");
+//      messageListName.add(getUserString()); // Add user input into array list.
+      messageList.put(i, a.getUserString());
+    }
+//    // Print messages.
+//    a.shoutOutCannedMessage(messageList);
+//    Integer message = messageList.get(1);
+//    System.out.printf("Value is: %s", message);
+
+//    for(Map.Entry<Integer, String> entry : messageList.entrySet())
+//    {
+//       System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
+//    }
     
-    // Collect the messages from the user (these are the array list values).
-    a.setMessages(count, messageList);
+    do {
+      System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
+      // Print messages from the list in args.
+      for(Map.Entry<Integer, String> entry : messageList.entrySet()) {
+         System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
+      }
+      System.out.printf("%n>> ");
+      count = a.getUserInteger() - 1; // Subtract one from the user input to get the index value. 
+    }
+    while (count >= messageList.size()); // Keep iterating if user enters something outside the array index.
+
+    System.out.printf("%n");
     
-    // Print messages.
-    a.shoutOutCannedMessage(messageList);
+    System.out.println(messageList.entrySet());
+//    System.out.println("Key: " + messageList.getKey() + " Value: " + messageList.getValue());
+//    Integer message = messageList.get(1);
+//    System.out.printf("Value is: %s", message);
   }
   
 }
