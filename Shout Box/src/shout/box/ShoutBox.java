@@ -13,38 +13,10 @@ import java.util.*; // Since we need 3 imports, this seems more prudent. Also en
  * @author Smokie Lee
  */
 public class ShoutBox {
+  private final userInput u = new userInput(); // Create new user input object.
+//  private final createMessageList l = new createMessageList(); // Create new message list object.
   
   // NOTE: getters
-
-  /**
-   * Get next line of user input.
-   * @return userString   Returns the value input by the user.
-   */
-   public String getUserString() {
-    Scanner userInputScanner = new Scanner(System.in); // Create a new scanner object to collect the user input.
-    String userString = userInputScanner.nextLine(); // Create a new string variable to store the user input.
-    return userString; // Returns the value of the user input.
-  }
-  
-  /**
-   * Get next integer (primitive) of user input.
-   * @return userInt   Returns the value input by the user.
-   */
-  public int getUserInt() {
-    Scanner userInputScanner = new Scanner(System.in); // Create a new scanner object to collect the user input.
-    int userInt = userInputScanner.nextInt(); // Create a new string variable to store the user input.
-    return userInt; // Returns the value of the user input.
-  }
-  
-  /**
-   * Get next integer of user input.
-   * @return userInteger   Returns the value input by the user.
-   */
-  public int getUserInteger() {
-    Scanner userInputScanner = new Scanner(System.in); // Create a new scanner object to collect the user input.
-    Integer userInteger = userInputScanner.nextInt(); // Create a new string variable to store the user input.
-    return userInteger; // Returns the value of the user input.
-  }
   
   /**
    * Print out each message in the array list in a numbered list.
@@ -80,7 +52,7 @@ public class ShoutBox {
       System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
       getMessages(messageListName); // Print messages from the list in args.
       System.out.printf("%n>> ");
-      messageNumber = getUserInteger(); // Set user input to the index value. 
+      messageNumber = u.getUserInteger(); // Set user input to the index value. 
     }
     while (messageNumber > messageListName.size()); // Keep iterating if user enters something outside the array index.
 
@@ -100,7 +72,7 @@ public class ShoutBox {
   public void setMessages(Integer numMessages, HashMap<Integer, String> messageListName) {
     for (int i = 1; i <= numMessages; i++) { // Start the count at 1 instead of 0.
       System.out.printf("%nPlease enter a message:%n>> ");
-      messageListName.put(i, getUserString()); // Add user input into hash map.
+      messageListName.put(i, u.getUserString()); // Add user input into hash map.
     }
   }
 
@@ -112,6 +84,7 @@ public class ShoutBox {
     
     // Create objects.
     ShoutBox a = new ShoutBox(); // Create main ShoutBox object.
+    userInput u = new userInput(); // Create new user input object.
     HashMap<Integer, String> messageList = new HashMap<>(); // Create array list to hold user messages.
     Integer count; // Create a variable to hold the number of messages the user wants to input.
     
@@ -120,13 +93,20 @@ public class ShoutBox {
     
     // Collect number of messages from user (this is the size of the hash map).
     System.out.printf("How many messages would you like to enter? Please enter a number.%n>> ");
-    count = a.getUserInteger(); // Set count variable to user input.
+    count = u.getUserInteger(); // Set count variable to user input.
     
     // Collect the messages from the user (these are the array list values).
     a.setMessages(count, messageList);
     
     // Print messages.
     a.shoutOutCannedMessage(messageList);
+
+//    userInput error = new userInput(); // Test that the "error" message works.
+    
+//    System.out.printf("How many messages would you like to enter? Please enter a number.%n>> ");
+//    count = u.getUserInt();
+//    System.out.println("You entered: " + count);
+    
   }
-  
+
 }
