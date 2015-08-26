@@ -78,7 +78,7 @@ public class ShoutBox {
    */
 //  public String getSingleMessage(int messageNumber,ArrayList<String> messageListName) {
   public String getSingleMessage(int messageNumber,HashMap<Integer, String> messageListName) {
-    String message = "";
+    String message = ""; // Initialize variable for later use.
     System.out.printf("%s%n",messageListName.get(messageNumber));
     return message; // Return selected message.
   }
@@ -168,16 +168,28 @@ public class ShoutBox {
       System.out.printf("%nPlease type a number from the list below to print that message.%n%n");
       // Print messages from the list in args.
       for(Map.Entry<Integer, String> entry : messageList.entrySet()) {
-         System.out.println("Key: " + entry.getKey() + " Value: " + entry.getValue());
+        System.out.printf("%s: %s\n",entry.getKey(),entry.getValue());
+//         System.out.printf(entry.getKey() + ": " + entry.getValue());
       }
       System.out.printf("%n>> ");
-      count = a.getUserInteger() - 1; // Subtract one from the user input to get the index value. 
+//      count = a.getUserInteger() - 1; // Subtract one from the user input to get the index value. 
+      count = a.getUserInteger(); // Subtract one from the user input to get the index value. 
     }
-    while (count >= messageList.size()); // Keep iterating if user enters something outside the array index.
+    while (count > messageList.size()); // Keep iterating if user enters something outside the array index.
 
     System.out.printf("%n");
     
-    System.out.println(messageList.entrySet());
+//    System.out.println(messageList.get(1));
+//    String message = "";
+    System.out.printf("%s%n",messageList.get(count));
+    
+//    // Close the program functions.
+//    Boolean close = false;
+//    do {
+//      // DO THIS
+//    }
+//    while (close = false);
+
 //    System.out.println("Key: " + messageList.getKey() + " Value: " + messageList.getValue());
 //    Integer message = messageList.get(1);
 //    System.out.printf("Value is: %s", message);
