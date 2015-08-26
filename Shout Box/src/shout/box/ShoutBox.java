@@ -127,13 +127,6 @@ public class ShoutBox {
     
     // Print messages.
     a.shoutOutCannedMessage(messageList);
-    
-//    // TODO: add close function below
-//    Boolean close = false;
-//    do {
-//      // DO THIS
-//    }
-//    while (close = false);
   }
   
 }
