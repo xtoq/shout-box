@@ -6,13 +6,19 @@
 package shout.box;
 
 // NOTE: imports
+<<<<<<< HEAD
 import java.util.*; // Since we need 3 imports, this seems more prudent. Also endorsed by the Java documentation.
+=======
+import java.util.HashMap; // Since we need 3 imports, this seems more prudent. Also endorsed by the Java documentation.
+>>>>>>> encap
 
 /**
+ * The ShoutBox class collects and displays user messages.
  *
  * @author Smokie Lee
  */
 public class ShoutBox {
+<<<<<<< HEAD
   
   // NOTE: getters
 
@@ -103,14 +109,16 @@ public class ShoutBox {
       messageListName.put(i, getUserString()); // Add user input into hash map.
     }
   }
+=======
+>>>>>>> encap
 
   /**
    * @param args the command line arguments
    */
-//  @SuppressWarnings("unchecked")
   public static void main(String[] args) {
-    
+
     // Create objects.
+<<<<<<< HEAD
     ShoutBox a = new ShoutBox(); // Create main ShoutBox object.
     HashMap<Integer, String> messageList = new HashMap<>(); // Create array list to hold user messages.
     Integer count; // Create a variable to hold the number of messages the user wants to input.
@@ -124,9 +132,20 @@ public class ShoutBox {
     
     // Collect the messages from the user (these are the array list values).
     a.setMessages(count, messageList);
+=======
+    createMessageList list = new createMessageList(); // Create a new message list object.
+    HashMap<Integer, String> messageHashMap = new HashMap<>(); // Create hash map object to hold user messages.
+
+    // Welcome the user.
+    System.out.printf("Welcome to the \"ShoutBox\" program. Let's shout some messages!%n%n");
+
+    // Collect number of messages (this is the size of the hash map) & the messages (these are the hash map values) from the user.
+    list.setMessages(list.getNumber(), messageHashMap);
+>>>>>>> encap
     
     // Print messages.
-    a.shoutOutCannedMessage(messageList);
+    list.shoutOutCannedMessage(messageHashMap);
+
   }
-  
+
 }
