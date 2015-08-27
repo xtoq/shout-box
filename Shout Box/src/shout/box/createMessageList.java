@@ -16,7 +16,6 @@ public final class createMessageList {
 
   private final userInput u = new userInput(); // Create new user input object.
   private Integer count;
-  private HashMap<Integer, String> list;
 
   /**
    * No argument constructor.
@@ -31,6 +30,7 @@ public final class createMessageList {
    * @param messageListName Name of the message list.
    */
   public createMessageList(Integer numMessages, HashMap<Integer, String> messageListName) {
+//    this.messageHashMap = new HashMap<>();
     // Set user input as messages.
     setMessages(numMessages, messageListName);
   }
@@ -95,6 +95,7 @@ public final class createMessageList {
   }
     
   public Integer getNumber() {
+    System.out.printf("How many messages would you like to enter? Please enter a number.%n>> ");
     this.count = u.getUserInteger();
     return count;
   }
